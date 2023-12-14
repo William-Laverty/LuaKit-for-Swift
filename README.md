@@ -1,4 +1,4 @@
-# Lua Integration in Swift
+# Lua Interpoperability in Swift
 
 ## Overview
 This Swift Package allows seamless integration of Lua scripting capabilities within Swift applications. It provides a comprehensive suite of functionalities, utilities, and examples to facilitate the interaction between Swift and Lua scripts.
@@ -34,23 +34,22 @@ This Swift Package allows seamless integration of Lua scripting capabilities wit
 - **Usage**: Provides an example of using Lua functionalities within a Swift executable.
 
 ### LuaIntegrationDemo.swift
-- **Purpose**: Demonstrates advanced Lua integration in Swift.
+- **Purpose**: Demonstrates advanced LuaKit in Swift.
 - **Usage**: Example of intricate interactions between Lua and Swift in a complex scenario.
 
 ### LuaIntegrationTests
-- **Purpose**: Contains unit tests for Lua integration functionalities.
+- **Purpose**: Contains unit tests for LuaKit functionalities.
 - **Usage**: Ensures correctness and reliability of Lua functionalities.
 
-## Usage Guide
-# Integrating Lua Integration in Xcode
+# Usage Guide
 
 ## Prerequisites
 - **Xcode**: Ensure you have Xcode installed on your system.
-- **Swift Package Manager (SPM)**: The Lua Integration package uses SPM for dependency management.
+- **Swift Package Manager (SPM)**: The LuaKit package uses SPM for dependency management.
 
 ## Integration Steps
 1. **Clone or Download**:
-   - Clone the Lua Integration repository or download the source files.
+   - Clone the LuaKit repository or download the source files.
 
 2. **Open Xcode Project**:
    - Open your Xcode project or create a new project.
@@ -59,10 +58,10 @@ This Swift Package allows seamless integration of Lua scripting capabilities wit
    - Click on your Xcode project in the Navigator.
    - Select your target, navigate to the `Swift Packages` tab.
    - Click the `+` button and choose `Add Package Dependency`.
-   - Enter the URL of the Lua Integration GitHub repository or the local path to the package directory.
+   - Enter the URL of the LuaKit GitHub repository or the local path to the package directory.
    - Click `Next`, specify the version or branch, then click `Finish`.
 
-4. **Import Lua Integration**:
+4. **Import LuaKit**:
    - In your Swift files where you want to use Lua functionalities, import the necessary modules:
      ```swift
       import LuaKit
@@ -120,7 +119,7 @@ This Swift Package allows seamless integration of Lua scripting capabilities wit
      - Refer to `LuaDemo.swift` and `LuaIntegrationDemo.swift` for examples of Lua usage in Swift.
 
 6. **Run and Test**:
-   - Run your project to test Lua Integration functionalities.
+   - Run your project to test LuaKit functionalities.
    - Refer to the `LuaIntegrationTests` directory for unit tests and to verify the functionalities.
 
 ## Troubleshooting
@@ -129,7 +128,7 @@ This Swift Package allows seamless integration of Lua scripting capabilities wit
   - Check for any missing or incorrect dependencies.
   
 - **Build Issues**:
-  - If you encounter build issues related to Lua Integration, review the import statements and ensure proper module usage.
+  - If you encounter build issues related to LuaKit, review the import statements and ensure proper module usage.
 
 ## Contributing
 - Contributions are welcome! Fork the repository, make your changes, and submit a pull request.
