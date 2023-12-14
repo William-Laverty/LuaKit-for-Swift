@@ -1,0 +1,14 @@
+//
+//  module.modulemap
+//  LuaKit for Swift
+//
+//  Created by William Laverty on 14/12/2023.
+//
+
+module lua [system] {
+  header "/opt/homebrew/include/lua/lauxlib.h"
+  header "/opt/homebrew/include/lua/lua.h"
+  header "/opt/homebrew/include/lua/lualib.h"
+  link "lua"
+  export *
+}
