@@ -1,7 +1,7 @@
 # Lua Integration in Swift
 
 ## Overview
-This allows seamless integration of Lua scripting capabilities within Swift applications. It provides a comprehensive suite of functionalities, utilities, and examples to facilitate the interaction between Swift and Lua scripts.
+This Swift Package allows seamless integration of Lua scripting capabilities within Swift applications. It provides a comprehensive suite of functionalities, utilities, and examples to facilitate the interaction between Swift and Lua scripts.
 
 ## File Structure
 
@@ -9,21 +9,21 @@ This allows seamless integration of Lua scripting capabilities within Swift appl
 - **Description**: Defines Swift Package manifest and dependencies for Lua integration.
 - **Purpose**: Configures the package, its targets, dependencies, and products.
 
-### Sources/
-- **LuaKit/**
+### Sources
+- **LuaKit**
   - **LuaBridge.swift**: Bridges functionality between Lua and Swift.
   - **LuaKit.swift**: Handles Lua interaction and script execution.
   - **LuaStackDump.swift**: Prints Lua stack information.
   - **Macros.swift**: Contains macros/utilities for Lua functions.
 
-### LuaDemo/
+### LuaDemo
 - **LuaDemo.swift**: Demonstrates basic Lua usage within a Swift executable.
 
-### LuaIntegrationDemo/
+### LuaIntegrationDemo
 - **LuaIntegrationDemo.swift**: Demonstrates advanced Lua-Swift interaction.
 
-### Tests/
-- **LuaIntegrationTests/**: Contains unit tests for Lua integration functionalities.
+### Tests
+- **LuaIntegrationTests**: Contains unit tests for Lua integration functionalities.
 
 ## File Details
 
@@ -59,31 +59,102 @@ This allows seamless integration of Lua scripting capabilities within Swift appl
 - **Purpose**: Demonstrates advanced Lua integration in Swift.
 - **Usage**: Example of intricate interactions between Lua and Swift in a complex scenario.
 
-### LuaIntegrationTests/
+### LuaIntegrationTests
 - **Purpose**: Contains unit tests for Lua integration functionalities.
 - **Usage**: Ensures correctness and reliability of Lua functionalities.
 
 ## Usage Guide
-1. **Integration Steps**:
-   - Review `Package.swift` for dependencies.
-2. **Basic Usage**:
-   - Refer to `LuaDemo.swift` for basic Lua integration.
-3. **Advanced Usage**:
-   - Explore `LuaIntegrationDemo.swift` for advanced Lua-Swift interaction.
-4. **Testing**:
-   - Run tests in `LuaIntegrationTests` to verify functionality.
+# Integrating Lua Integration in Xcode
+
+## Prerequisites
+- **Xcode**: Ensure you have Xcode installed on your system.
+- **Swift Package Manager (SPM)**: The Lua Integration package uses SPM for dependency management.
+
+## Integration Steps
+1. **Clone or Download**:
+   - Clone the Lua Integration repository or download the source files.
+
+2. **Open Xcode Project**:
+   - Open your Xcode project or create a new project.
+
+3. **Add Swift Package**:
+   - Click on your Xcode project in the Navigator.
+   - Select your target, navigate to the `Swift Packages` tab.
+   - Click the `+` button and choose `Add Package Dependency`.
+   - Enter the URL of the Lua Integration GitHub repository or the local path to the package directory.
+   - Click `Next`, specify the version or branch, then click `Finish`.
+
+4. **Import Lua Integration**:
+   - In your Swift files where you want to use Lua functionalities, import the necessary modules:
+     ```swift
+      import LuaKit
+      
+      // A class to manage Lua interpretation
+      public class LuaInterpreter {
+          let lua = Lua()
+      
+          // Enum for handling Lua execution errors
+          enum LuaError: Error {
+              case executionError(String)
+          }
+      
+          // Function to interpret Lua code
+          func interpret(luaCode: String) throws -> String {
+              do {
+                  // Execute Lua code
+                  try lua.withUnchangedStack {
+                      lua.execute(source: luaCode)
+                  }
+                  return "Code executed successfully"
+              } catch let error {
+                  // Throw custom error if Lua execution fails
+                  throw LuaError.executionError("Error executing Lua code: \(error.localizedDescription)")
+              }
+          }
+      }
+      
+      // A SwiftUI View demonstrating Lua code execution
+      struct ContentView: View {
+          let luaInterpreter = LuaInterpreter()
+          let fileContent = "your_lua_code_here" // Replace with your Lua code
+      
+          @State private var output: String = ""
+      
+          var body: some View {
+              Text(output)
+                  .onAppear {
+                      do {
+                          // Attempt to execute Lua code
+                          output = try luaInterpreter.interpret(luaCode: fileContent)
+                      } catch {
+                          // Handle errors during Lua code execution
+                          output = "Error executing Lua code: \(error.localizedDescription)"
+                      }
+                  }
+          }
+      }
+
+     ```
+
+5. **Usage**:
+   - Utilize the provided functionalities according to your requirements. For instance:
+     - Use `LuaKit.swift` for managing Lua interaction.
+     - Refer to `LuaDemo.swift` and `LuaIntegrationDemo.swift` for examples of Lua usage in Swift.
+
+6. **Run and Test**:
+   - Run your project to test Lua Integration functionalities.
+   - Refer to the `LuaIntegrationTests` directory for unit tests and to verify the functionalities.
+
+## Troubleshooting
+- **Dependency Errors**:
+  - Ensure your package dependencies are correctly specified in the `Package.swift` file.
+  - Check for any missing or incorrect dependencies.
+  
+- **Build Issues**:
+  - If you encounter build issues related to Lua Integration, review the import statements and ensure proper module usage.
 
 ## Contributing
 - Contributions are welcome! Fork the repository, make your changes, and submit a pull request.
 
 ## License
-This project is licensed under [LICENSE_NAME] - see the [LICENSE_FILE](LICENSE_FILE) for details.
-
-## Acknowledgments
-- Acknowledge contributors or external libraries used.
-- Any additional acknowledgments or credits.
-
-## Support
-- Contact information for support or inquiries.
-- Guidelines for issue reporting or feature requests.
-
+This project is licensed under [MIT License] - see the [MIT License]([LICENSE_FILE](https://github.com/William-Laverty/LuaKit-for-Swift/blob/main/LICENSE)) for details.
