@@ -134,4 +134,4 @@ This Swift Package allows seamless integration of Lua scripting capabilities wit
 - Contributions are welcome! Fork the repository, make your changes, and submit a pull request.
 
 ## License
-This project is licensed under [MIT License] - see the [MIT License]([LICENSE_FILE](https://github.com/William-Laverty/LuaKit-for-Swift/blob/main/LICENSE)) for details.
+This project is licensed under MIT License - see the [MIT License](https://github.com/William-Laverty/LuaKit-for-Swift/blob/main/LICENSE) for details.
