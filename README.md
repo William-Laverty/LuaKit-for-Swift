@@ -3,28 +3,6 @@
 ## Overview
 This Swift Package allows seamless integration of Lua scripting capabilities within Swift applications. It provides a comprehensive suite of functionalities, utilities, and examples to facilitate the interaction between Swift and Lua scripts.
 
-## File Structure
-
-### Package.swift
-- **Description**: Defines Swift Package manifest and dependencies for Lua integration.
-- **Purpose**: Configures the package, its targets, dependencies, and products.
-
-### Sources
-- **LuaKit**
-  - **LuaBridge.swift**: Bridges functionality between Lua and Swift.
-  - **LuaKit.swift**: Handles Lua interaction and script execution.
-  - **LuaStackDump.swift**: Prints Lua stack information.
-  - **Macros.swift**: Contains macros/utilities for Lua functions.
-
-### LuaDemo
-- **LuaDemo.swift**: Demonstrates basic Lua usage within a Swift executable.
-
-### LuaIntegrationDemo
-- **LuaIntegrationDemo.swift**: Demonstrates advanced Lua-Swift interaction.
-
-### Tests
-- **LuaIntegrationTests**: Contains unit tests for Lua integration functionalities.
-
 ## File Details
 
 ### LuaBridge.swift
