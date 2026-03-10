@@ -26,6 +26,7 @@ let package = Package(
             name: "LuaKitTests",
             dependencies: [
                 "LuaKit",
+                "LuaKitMacros",
                 .product(name: "SwiftSyntaxMacrosTestSupport", package: "swift-syntax")
             ]),
         .macro(name: "LuaKitMacros",
