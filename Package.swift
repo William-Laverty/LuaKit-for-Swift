@@ -1,7 +1,4 @@
 // swift-tools-version: 5.9
-// The swift-tools-version declares the minimum version of Swift required to build this package.
-
-// swift-tools-version: 5.9
 
 import PackageDescription
 import CompilerPluginSupport
@@ -9,7 +6,8 @@ import CompilerPluginSupport
 let package = Package(
     name: "LuaKit",
     platforms: [
-        .macOS(.v14)
+        .macOS(.v14),
+        .iOS(.v17)
     ],
     products: [
         .library(
@@ -17,7 +15,7 @@ let package = Package(
             targets: ["LuaKit"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-syntax.git", from: "509.0.0-swift-5.9-DEVELOPMENT-SNAPSHOT-2023-04-25-b"),
+        .package(url: "https://github.com/apple/swift-syntax.git", from: "509.0.0"),
     ],
     targets: [
         .target(name: "LuaKit", dependencies: ["lua", "LuaKitMacros"]),
@@ -38,4 +36,3 @@ let package = Package(
         )
     ]
 )
-
