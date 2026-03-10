@@ -29,6 +29,6 @@ do {
         """#
 
         // Execute Lua code using the Lua instance
-        lua.execute(source: source)
+        try lua.execute(source: source)
     }
 }
