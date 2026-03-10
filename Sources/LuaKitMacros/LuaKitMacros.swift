@@ -4,39 +4,35 @@
 //  Created by William Laverty on 14/12/2023.
 //
 
-import Metal
 import SwiftCompilerPlugin
 import SwiftSyntax
 import SwiftSyntaxBuilder
 import SwiftSyntaxMacros
 import SwiftDiagnostics
 
-// Main struct defining a CompilerPlugin for supporting macros
 @main
-struct MetalSupportMacrosPlugin: CompilerPlugin {
+struct LuaKitMacrosPlugin: CompilerPlugin {
     let providingMacros: [Macro.Type] = [
         LuaFunctionMacro.self,
     ]
 }
 
-// Struct defining LuaFunctionMacro conforming to PeerMacro protocol
 public struct LuaFunctionMacro {
 }
 
 extension LuaFunctionMacro: PeerMacro {
-    // Expansion of the LuaFunctionMacro
     public static func expansion(of node: AttributeSyntax, providingPeersOf declaration: some DeclSyntaxProtocol, in context: some MacroExpansionContext) throws -> [DeclSyntax] {
-
-        print("#####", Self.self, #function)
-        
-        // Guarding and handling FunctionDeclSyntax
         guard let funcDecl = declaration.as(FunctionDeclSyntax.self) else {
+            let diagnostic = Diagnostic(
+                node: node,
+                message: LuaKitDiagnostic.notAFunction
+            )
+            context.diagnose(diagnostic)
             return []
         }
 
         let functionName = funcDecl.name.trimmedDescription
 
-        // Return an array with a dynamically generated Swift function based on Lua function call
         return [
             """
             func _register(lua: Lua) throws {
@@ -47,5 +43,22 @@ extension LuaFunctionMacro: PeerMacro {
             }
             """
         ]
+    }
+}
+
+enum LuaKitDiagnostic: String, DiagnosticMessage {
+    case notAFunction
+
+    var severity: DiagnosticSeverity { .error }
+
+    var message: String {
+        switch self {
+        case .notAFunction:
+            return "@LuaFunction can only be applied to functions"
+        }
+    }
+
+    var diagnosticID: MessageID {
+        MessageID(domain: "LuaKit", id: rawValue)
     }
 }
